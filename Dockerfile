@@ -32,5 +32,7 @@ RUN apk add ${BUILDPATH} && \
     apk del ${BUILDPATH}
 
 ADD start.sh /
+RUN chmod +x /start.sh
 EXPOSE 443
-CMD set -xe /start.sh
+EXPOSE 1080
+CMD set -xe && /start.sh
