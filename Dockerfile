@@ -23,7 +23,7 @@ RUN apk add ${BUILDPATH} && \
     ./autogen.sh && \
     ./configure --disable-documentation && \
     make && make install && \
-    cd ../simpl-obfs && \
+    cd /ss/simpl-obfs && \
     git submodule init && \
     git submodule update && \
     ./autogen.sh && \
