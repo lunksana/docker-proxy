@@ -7,6 +7,7 @@ ENV METHOD=chacha20-ieft-poly1305
 ENV PLUGIN=obfs-server
 ENV PLUGIN_OPT='obfs=http'
 ENV SS_MOD=ss-server
+ENV ENABLE_OBFS='N'
 
 RUN apk update && \
     apk upgrade
@@ -35,4 +36,4 @@ ADD start.sh /
 RUN chmod +x /start.sh
 EXPOSE 443
 EXPOSE 1080
-CMD set -xe && /start.sh
+ENTRYPOINT [ "/start.sh" ]
