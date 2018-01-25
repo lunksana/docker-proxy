@@ -1,7 +1,7 @@
 FROM alpine:latest
 LABEL maintainer="lunksana <zoufeng4@gmail.com>"
 
-ENV BUILDPATH='git make linux-headers pcre-dev libev-dev automake libtool c-ares-dev gcc libsodium-dev mbedtls-dev libc-dev'
+ENV BUILDPATH='git make linux-headers pcre-dev libev-dev autoconf automake libtool c-ares-dev gcc libsodium-dev mbedtls-dev libc-dev'
 ENV PASSWORD=PASSWORD
 ENV METHOD=chacha20-ieft-poly1305
 ENV PLUGIN=obfs-server
