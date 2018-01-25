@@ -1,7 +1,10 @@
 FROM alpine:latest
 LABEL maintainer="lunksana <zoufeng4@gmail.com>"
 
-ENV BUILDPATH='git make linux-headers pcre-dev libev-dev autoconf automake libtool c-ares-dev gcc libsodium-dev mbedtls-dev libc-dev'
+ENV BUILDPATH='git make linux-headers autoconf automake libtool gcc libc-dev'
+ENV METHODPATH='pcre-dev libev-dev libsoduim-dev c-ares-dev mbedtls-dev'
+ENV SERVER_HOST=0.0.0.0
+ENV SERVER_PORT=443
 ENV PASSWORD=PASSWORD
 ENV METHOD=chacha20-ieft-poly1305
 ENV PLUGIN=obfs-server
@@ -13,6 +16,7 @@ RUN apk update && \
     apk upgrade
 
 RUN apk add ${BUILDPATH} && \
+    apk add ${METHODPATH} && \
     mkdir /ss && \
     cd /ss && \
     git clone https://github.com/shadowsocks/shadowsocks-libev && \
@@ -30,7 +34,8 @@ RUN apk add ${BUILDPATH} && \
     ./configure --disable-documentation && \
     make && make install && \
     rm -rf /ss &&\
-    apk del ${BUILDPATH}
+    apk del ${BUILDPATH} && \
+    rm -rf /var/apk/cache/*
 
 ADD start.sh /
 RUN chmod +x /start.sh
