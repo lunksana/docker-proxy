@@ -1,5 +1,5 @@
 # Docker-proxy
-## 构建shadowsocks+privoxy代理容器
+## 构建shadowsocks+obfs代理容器
 1. 基于alipine
 2. shadowsocks-libev
-3. privoxy
+3. simple-obfs
