@@ -20,8 +20,8 @@
 #    exit 1
 #fi
 
-if [ ${ENABLE_OBFS} = "N" ]; then
+if [ ${ENABLE_OBFS} != "Y" ]; then
 /usr/local/bin/${SS_MOD} -k ${PASSWORD} -m ${METHOD} -l 1080 -u
 else
-/usr/local/bin/${SS_MOD} -K ${PASSWORD} -m ${METHOD} -l 1080 -u --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS}
+/usr/local/bin/${SS_MOD} -k ${PASSWORD} -m ${METHOD} -l 1080 -u --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS}
 fi

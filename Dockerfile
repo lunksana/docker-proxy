@@ -6,7 +6,7 @@ ENV METHODPATH='pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev'
 ENV SERVER_HOST=0.0.0.0
 ENV SERVER_PORT=443
 ENV PASSWORD=PASSWORD
-ENV METHOD=chacha20-ieft-poly1305
+ENV METHOD=chacha20-ietf-poly1305
 ENV PLUGIN=obfs-server
 ENV PLUGIN_OPT='obfs=http'
 ENV SS_MOD=ss-server
