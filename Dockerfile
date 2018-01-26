@@ -5,8 +5,8 @@ ENV BUILDPATH='git make linux-headers autoconf automake libtool gcc libc-dev'
 ENV METHODPATH='pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev'
 ENV SERVER_HOST=0.0.0.0
 ENV SERVER_PORT=443
-ENV PASSWORD=PASSWORD
-ENV METHOD=chacha20-ietf-poly1305
+ENV PASSWORD='PASSWORD'
+ENV METHOD='chacha20-ietf-poly1305'
 ENV PLUGIN=obfs-server
 ENV PLUGIN_OPT='obfs=http'
 ENV SS_MOD=ss-server
@@ -41,4 +41,4 @@ ADD start.sh /
 RUN chmod +x /start.sh
 EXPOSE 443
 EXPOSE 1080
-ENTRYPOINT [ "/start.sh" ]
+CMD [ "/start.sh" ]
