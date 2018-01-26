@@ -41,4 +41,4 @@ ADD start.sh /
 RUN chmod +x /start.sh
 EXPOSE 443
 EXPOSE 1080
-CMD [ "/start.sh" ]
+ENTRYPOINT [ "/start.sh" ]
