@@ -35,7 +35,7 @@ RUN apk add ${BUILDPATH} && \
     make && make install && \
     rm -rf /ss &&\
     apk del ${BUILDPATH} && \
-    rm -rf /var/apk/cache/*
+    rm -rf /var/cache/apk/*
 
 ADD start.sh /
 RUN chmod +x /start.sh
