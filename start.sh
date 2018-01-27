@@ -20,8 +20,16 @@
 #    exit 1
 #fi
 
-if [ ${ENABLE_OBFS} != "Y" ]; then
-/usr/local/bin/${SS_MOD} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l 1090 -u
+if [ ${SS_MOD} == "ss-server"]; then
+    if [ ${ENABLE_OBFS} != 'true' ]; then
+        ${SS_MOD} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l ${LOCAL_PORT} -u
+    else
+        ${SS_MOD} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l ${LOCAL_PORT} -u --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS}
+    fi
 else
-/usr/local/bin/${SS_MOD} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l 1090 -u --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS}
+    if [ ${ENABLE_OBFS} != 'true' ]; then
+        ${SS_MOD} -s ${SERVER_HOST} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l ${LOCAL_PORT} -u
+    else
+        ${SS_MOD} -s ${SERVER_HOST} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l ${LOCAL_PORT} -u --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS}
+    fi
 fi

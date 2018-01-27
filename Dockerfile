@@ -5,6 +5,7 @@ ENV BUILDPATH='git make linux-headers autoconf automake libtool gcc libc-dev'
 ENV METHODPATH='pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev'
 ENV SERVER_HOST=0.0.0.0
 ENV SERVER_PORT=443
+ENV LOCAL_PORT=1080
 ENV PASSWORD='PASSWORD'
 ENV METHOD='chacha20-ietf-poly1305'
 ENV PLUGIN=obfs-server
@@ -22,14 +23,12 @@ RUN apk add ${BUILDPATH} && \
     git clone https://github.com/shadowsocks/shadowsocks-libev && \
     git clone https://github.com/shadowsocks/simple-obfs && \
     cd shadowsocks-libev && \
-    git submodule init && \
-    git submodule update && \
+    git submodule update --init && \
     ./autogen.sh && \
     ./configure --disable-documentation && \
     make && make install && \
     cd /ss/simple-obfs && \
-    git submodule init && \
-    git submodule update && \
+    git submodule update --init -- recursive && \
     ./autogen.sh && \
     ./configure --disable-documentation && \
     make && make install && \
@@ -39,6 +38,8 @@ RUN apk add ${BUILDPATH} && \
 
 ADD start.sh /
 RUN chmod +x /start.sh
-EXPOSE 443
-EXPOSE 1080
+EXPOSE ${SERVER_PORT}
+EXPOSE ${SERVER_PORT}/udp
+EXPOSE ${LOCAL_PORT}
+EXPOSE ${LOCAL_PORT}/udp
 ENTRYPOINT [ "/start.sh" ]
