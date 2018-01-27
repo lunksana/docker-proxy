@@ -11,7 +11,7 @@ ENV METHOD='chacha20-ietf-poly1305'
 ENV PLUGIN=obfs-server
 ENV PLUGIN_OPT='obfs=http'
 ENV SS_MOD=ss-server
-ENV ENABLE_OBFS='N'
+ENV ENABLE_OBFS='false'
 
 RUN apk update && \
     apk upgrade
@@ -28,7 +28,7 @@ RUN apk add ${BUILDPATH} && \
     ./configure --disable-documentation && \
     make && make install && \
     cd /ss/simple-obfs && \
-    git submodule update --init -- recursive && \
+    git submodule update --init --recursive && \
     ./autogen.sh && \
     ./configure --disable-documentation && \
     make && make install && \
