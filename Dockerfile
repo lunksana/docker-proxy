@@ -38,8 +38,8 @@ RUN apk add ${BUILDPATH} && \
 
 ADD start.sh /
 RUN chmod +x /start.sh
-EXPOSE ${SERVER_PORT}
-EXPOSE ${SERVER_PORT}/udp
-EXPOSE ${LOCAL_PORT}
-EXPOSE ${LOCAL_PORT}/udp
+EXPOSE 443
+EXPOSE 443/udp
+EXPOSE 1080
+EXPOSE 1080/udp
 ENTRYPOINT [ "/start.sh" ]
