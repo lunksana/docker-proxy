@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ${SS_MOD} == "ss-server"]; then
+if [ ${SS_MOD} == "ss-server" ]; then
     if [ ${ENABLE_OBFS} != 'true' ]; then
         ${SS_MOD} -p ${SERVER_PORT} -k ${PASSWORD} -m ${METHOD} -l 1080 -u
     else
