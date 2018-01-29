@@ -42,4 +42,5 @@ EXPOSE 443
 EXPOSE 443/udp
 EXPOSE 1080
 EXPOSE 1080/udp
-ENTRYPOINT [ "/start.sh" ]
+# ENTRYPOINT [ "/start.sh" ]
+CMD [ "/start.sh" ]
