@@ -4,13 +4,13 @@ LABEL maintainer="lunksana <zoufeng4@gmail.com>"
 ENV BUILDPATH='git make linux-headers autoconf automake libtool gcc libc-dev'
 ENV METHODPATH='pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev'
 ENV SERVER_HOST=0.0.0.0
-ENV SERVER_PORT=443
-ENV LOCAL_PORT=1080
+ENV SERVER_PORT=8388
 ENV PASSWORD='PASSWORD'
 ENV METHOD='chacha20-ietf-poly1305'
-ENV PLUGIN=obfs-server
+ENV PLUGIN='obfs-server'
 ENV PLUGIN_OPTS='obfs=http'
-ENV SS_MOD=ss-server
+ENV PLUGIN_POTS_LOCAL='obfs=http;obfs-host=www.bing.com'
+ENV SS_MOD='ss-server'
 ENV ENABLE_OBFS='false'
 
 RUN apk update && \
@@ -38,8 +38,8 @@ RUN apk add ${BUILDPATH} && \
 
 ADD start.sh /
 RUN chmod +x /start.sh
-EXPOSE 443
-EXPOSE 443/udp
+EXPOSE 8388
+EXPOSE 8388/udp
 EXPOSE 1080
 EXPOSE 1080/udp
 ENTRYPOINT [ "/start.sh" ]
