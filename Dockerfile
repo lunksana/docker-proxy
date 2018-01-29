@@ -9,7 +9,7 @@ ENV LOCAL_PORT=1080
 ENV PASSWORD='PASSWORD'
 ENV METHOD='chacha20-ietf-poly1305'
 ENV PLUGIN=obfs-server
-ENV PLUGIN_OPT='obfs=http'
+ENV PLUGIN_OPTS='obfs=http'
 ENV SS_MOD=ss-server
 ENV ENABLE_OBFS='false'
 
@@ -42,5 +42,4 @@ EXPOSE 443
 EXPOSE 443/udp
 EXPOSE 1080
 EXPOSE 1080/udp
-# ENTRYPOINT [ "/start.sh" ]
-CMD [ "/start.sh" ]
+ENTRYPOINT [ "/start.sh" ]
