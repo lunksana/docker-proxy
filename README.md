@@ -12,7 +12,7 @@ docker pull lunksana/docker-proxy
 docker run --name proxy -p 8388:8388 lunksana/docker-proxy:latest
 
 ## 3.变量说明
-```
+
 |   变量名    |    默认值    |    说明    |
 |------------|-------------|------------|
 |SERVER_HOST |0.0.0.0      |服务器地址   |
@@ -24,7 +24,7 @@ docker run --name proxy -p 8388:8388 lunksana/docker-proxy:latest
 |PLUGIN_OPTS_LOCAL|obfs=http;obfs-host=www.bing.com|客户端混淆参数  |
 |ENABLE_OBFS |false        |是否启用混淆 |
 |SS_MOD      |ss-server    |SS模式，可选ss-server、ss-local、ss-redir、ss-tunnel|
-```
+
 以上变量根据实际需求进行调整
 
 ## 4.容器端口
@@ -42,4 +42,3 @@ SS运行模式通过SS_MOD变量进行控制，默认是服务端模式，即ss-
 |ss-local  |true           |ss-local -s 123.123.123.123 -p 8388 -k password -m chacha20-ietf-ploy1305 -l 1080 -u --plugin obfs-local --plugin-opts 'obfs=http;obfs-host=www.bing.com|
 ```
 服务端模式监听8388端口，客户端模式监听1080端口，请根据实际需要进行端口映射 
-
