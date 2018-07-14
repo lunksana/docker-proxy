@@ -33,6 +33,8 @@ RUN apk add ${BUILDPATH} && \
     ./configure --disable-documentation && \
     make && make install && \
     rm -rf /ss &&\
+    rm -rf /usr/local/bin/ss-redir &&\
+    rm -rf /usr/local/ss-tunnel && \
     apk del ${BUILDPATH} && \
     rm -rf /var/cache/apk/*
 
