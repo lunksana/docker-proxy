@@ -34,7 +34,7 @@ RUN apk add ${BUILDPATH} && \
     make && make install && \
     rm -rf /ss &&\
     rm -rf /usr/local/bin/ss-redir &&\
-    rm -rf /usr/local/ss-tunnel && \
+    rm -rf /usr/local/bin/ss-tunnel && \
     apk del ${BUILDPATH} && \
     rm -rf /var/cache/apk/*
 
