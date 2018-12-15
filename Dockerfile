@@ -1,7 +1,7 @@
 FROM alpine:latest
 LABEL maintainer="lunksana <zoufeng4@gmail.com>"
 
-ENV BUILDPATH='git make linux-headers autoconf automake libtool gcc libc-dev'
+ENV BUILDPATH='git make linux-headers autoconf automake libtool gcc libc-dev wget'
 ENV METHODPATH='pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev'
 ENV SERVER_HOST=0.0.0.0
 ENV SERVER_PORT=8388
@@ -22,6 +22,8 @@ RUN apk add ${BUILDPATH} && \
     cd /ss && \
     git clone https://github.com/shadowsocks/shadowsocks-libev && \
     git clone https://github.com/shadowsocks/simple-obfs && \
+    wget --no-check-certificate https://github.com/cbeuw/GoQuiet/releases/download/v1.2.2/gq-server-linux-amd64-1.2.2 && \
+    wget --no-check-certificate https://github.com/cbeuw/GoQuiet/releases/download/v1.2.2/gq-client-linux-amd64-1.2.2 && \
     cd shadowsocks-libev && \
     git submodule update --init && \
     ./autogen.sh && \
@@ -34,7 +36,7 @@ RUN apk add ${BUILDPATH} && \
     make && make install && \
     rm -rf /ss &&\
     rm -rf /usr/local/bin/ss-redir &&\
-    rm -rf /usr/local/bin/ss-tunnel && \
+    rm -rf /usr/local/bin/ss-manager && \
     apk del ${BUILDPATH} && \
     rm -rf /var/cache/apk/*
 

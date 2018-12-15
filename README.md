@@ -3,6 +3,7 @@
 1. 基于alipine
 2. shadowsocks-libev
 3. simple-obfs
+4. GoQuit
 
 # 使用方法
 ## 1.拉取镜像
