@@ -3,7 +3,6 @@
 1. 基于alipine
 2. shadowsocks-libev
 3. simple-obfs
-4. GoQuit
 
 # 使用方法
 ## 1.拉取镜像
@@ -22,9 +21,9 @@ docker run --name proxy -p 8388:8388 lunksana/docker-proxy:latest
 |METHOD      |chacha20-ietf-poly1305|加密方式    |
 |PLUGIN      |obfs-server  |混淆插件    |
 |PLUGIN_OPTS |obfs=http    |混淆参数，可选obfs=http、obfs=tls|
-|PLUGIN_OPTS_LOCAL|obfs=http;obfs-host=www.bing.com|客户端混淆参数  |
+|PLUGIN_OPTS_LOCAL|obfs=http;obfs-host=www.icloud.com|客户端混淆参数  |
 |ENABLE_OBFS |false        |是否启用混淆 |
-|SS_MOD      |ss-server    |SS模式，可选ss-server、ss-local,暂时只提供此两种模式|
+|SS_MOD      |ss-server    |SS模式，可选ss-server、ss-local、ss-tunnel,暂时只提供此三种模式|
 
 以上变量根据实际需求进行调整
 
@@ -40,6 +39,8 @@ SS运行模式通过SS_MOD变量进行控制，默认是服务端模式，即ss-
 |ss-server |false          |ss-server -p 8388 -k password -m chacha20-ietf-ploy1305 -l 1080 -u |
 |ss-server |true           |ss-server -p 8388 -k password -m chacha20-ietf-ploy1305 -l 1080 -u --plugin obfs-server --plugin-opts obfs=http|
 |ss-local  |false          |ss-local -s 123.123.123.123 -p 8388 -k password -m chacha20-ietf-ploy1305 -l 1080 -u|
-|ss-local  |true           |ss-local -s 123.123.123.123 -p 8388 -k password -m chacha20-ietf-ploy1305 -l 1080 -u --plugin obfs-local --plugin-opts 'obfs=http;obfs-host=www.bing.com'|
+|ss-local  |true           |ss-local -s 123.123.123.123 -p 8388 -k password -m chacha20-ietf-ploy1305 -l 1080 -u --plugin obfs-local --plugin-opts 'obfs=http;obfs-host=www.icloud.com'|
+|ss-tunnel |false          |ss-tunnel -s 123.123.123.123 -p 8388 -k password -m chacha20-ietf-ploy1305 -b 0.0.0.0 -l 1080 -L 8.8.8.8:53 -u|
+|ss-tunnel |true           |ss-tunnel -s 123.123.123.123 -p 8388 -k password -m chacha20-ietf-ploy1305 -b 0.0.0.0 -l 1080 --plugin obfs-local --plugin-opts 'obfs=http;obfs-host=www.icloud.com' -L 8.8.8.8:53 -u|
 
 服务端模式监听8388端口，客户端模式监听1080端口，请根据实际需要进行端口映射 
