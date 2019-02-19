@@ -8,8 +8,8 @@ ENV SERVER_PORT=8388
 ENV PASSWORD="password"
 ENV METHOD="chacha20-ietf-poly1305"
 ENV PLUGIN="obfs-server"
-ENV PLUGIN_OPTS="obfs=http"
-ENV PLUGIN_OPTS_LOCAL="obfs=http;obfs-host=www.icloud.com"
+ENV PLUGIN_OPTS="obfs\=http"
+ENV PLUGIN_OPTS_LOCAL="obfs\=http;obfs-host\=www.icloud.com"
 ENV SS_MOD="ss-server"
 ENV ENABLE_OBFS="false"
 
