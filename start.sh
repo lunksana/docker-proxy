@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #if [ ${SS_MOD} == "ss-server" ]; then
 #    if [ ${ENABLE_OBFS} != 'true' ]; then
@@ -14,25 +14,25 @@
 #    fi
 #fi
 case ${SS_MOD} in
-    ss-server) SERVER_PORT = 10000; MOD = 'server'
+    ss-server) MOD='server';SERVER_HOST=10000
     ;;
-    ss-local|ss-tunnel) LOCAL_PORT = 10000; MOD = 'client'
+    ss-local|ss-tunnel) LOCAL_PORT=10000; MOD='client'
     ;;
-    *) echo "ERROR,Mode does not exist!";exit
+    *) echo "ERROR,Mode does not exist!";exit 1
 esac
 
 if [ $MOD == 'server' ]; then
     if [ ${ENABLE_OBFS} != 'true' ]; then
-        EXTEND = ""
+        EXTEND="-u"
     else
-        EXTEND = "--plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS}"
+        EXTEND="--plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS} -u"
     fi
 else
     if [ ${ENABLE_OBFS} != 'true' ]; then
-        EXTEND = "-s ${SERVER_HOST} -b 0.0.0.0 -l 10000"
+        EXTEND="-s ${SERVER_HOST} -b 0.0.0.0 -l 10000 -u"
     else
-        EXTEND = "-s ${SERVER_HOST} -b 0.0.0.0 -l 10000 --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS_LOCAL}"
+        EXTEND="-s ${SERVER_HOST} -b 0.0.0.0 -l 10000 --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS_LOCAL} -u"
     fi
 fi
 
-${SS_MOD} -k ${PASSWORD} -p ${SERVER_PORT} -m ${METHOD} $EXTEND -u
+${SS_MOD} -k ${PASSWORD} -p ${SERVER_PORT} -m ${METHOD} ${EXTEND}

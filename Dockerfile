@@ -1,17 +1,17 @@
 FROM alpine:latest
 LABEL maintainer="lunksana <zoufeng4@gmail.com>"
 
-ENV BUILDPATH "git make linux-headers autoconf automake libtool gcc libc-dev wget"
-ENV METHODPATH "pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev"
-ENV SERVER_HOST 0.0.0.0
-ENV SERVER_PORT 8388
-ENV PASSWORD "password"
-ENV METHOD "chacha20-ietf-poly1305"
-ENV PLUGIN "obfs-server"
-ENV PLUGIN_OPTS "obfs=http"
-ENV PLUGIN_OPTS_LOCAL "obfs=http;obfs-host=www.icloud.com"
-ENV SS_MOD "ss-server"
-ENV ENABLE_OBFS "false"
+ENV BUILDPATH="git make linux-headers autoconf automake libtool gcc libc-dev"
+ENV METHODPATH="pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev"
+ENV SERVER_HOST=0.0.0.0
+ENV SERVER_PORT=8388
+ENV PASSWORD="password"
+ENV METHOD="chacha20-ietf-poly1305"
+ENV PLUGIN="obfs-server"
+ENV PLUGIN_OPTS=
+ENV PLUGIN_OPTS_LOCAL=
+ENV SS_MOD="ss-server"
+ENV ENABLE_OBFS="false"
 
 RUN apk update && \
     apk upgrade
