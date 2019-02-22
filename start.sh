@@ -14,7 +14,7 @@
 #    fi
 #fi
 case ${SS_MOD} in
-    ss-server) MOD='server';if [ ${SERVER_HOST} != 10000 ] || [ ${SERVER_HOST} != 0.0.0.0 ]; then exit 1; fi
+    ss-server) MOD='server';if [ ${SERVER_HOST} != 10000 ] || [ ${SERVER_HOST} != 0.0.0.0 ]; then echo "Error,Port or Host wrong!"; exit 1; fi
     ;;
     ss-local|ss-tunnel) MOD='client'
     ;;
