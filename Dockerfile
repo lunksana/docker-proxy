@@ -38,7 +38,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && (cd shadowsocks-libev \
     && git submodule update --init --recursive \
     && ./autogen.sh \
-    && ./configure --disable-documentation \
+    && ./configure --prefix=/usr --disable-documentation \
     && make && make install) \
     && (cd /ss/simple-obfs \
     && git submodule update --init --recursive \
@@ -54,7 +54,8 @@ RUN apk add --no-cache --virtual .build-deps \
 ##    && rm -rf /var/cache/apk/*
     && apk add --no-cache \
         $(scanelf --needed --nobanner /usr/local/bin/ss-* /usr/local/bin/obfs-* \
-        |awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+        | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+        | xargs -r apk info --installed \
         | sort -u) \
     && apk del .build-deps
 
