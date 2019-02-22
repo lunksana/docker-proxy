@@ -14,9 +14,9 @@
 #    fi
 #fi
 case ${SS_MOD} in
-    ss-server) MOD='server';SERVER_HOST=10000
+    ss-server) MOD='server';SERVER_HOST=10000;SERVER_HOST=0.0.0.0
     ;;
-    ss-local|ss-tunnel) LOCAL_PORT=10000; MOD='client'
+    ss-local|ss-tunnel) MOD='client'
     ;;
     *) echo "ERROR,Mode does not exist!";exit 1
 esac
@@ -29,10 +29,10 @@ if [ $MOD == 'server' ]; then
     fi
 else
     if [ ${ENABLE_OBFS} != 'true' ]; then
-        EXTEND="-s ${SERVER_HOST} -b 0.0.0.0 -l 10000 -u"
+        EXTEND="-b 0.0.0.0 -l 10000 -u"
     else
-        EXTEND="-s ${SERVER_HOST} -b 0.0.0.0 -l 10000 --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS_LOCAL} -u"
+        EXTEND="-b 0.0.0.0 -l 10000 --plugin ${PLUGIN} --plugin-opts ${PLUGIN_OPTS_LOCAL} -u"
     fi
 fi
 
-${SS_MOD} -k ${PASSWORD} -p ${SERVER_PORT} -m ${METHOD} ${EXTEND}
+${SS_MOD} -s ${SERVER_HOST} -k ${PASSWORD} -p ${SERVER_PORT} -m ${METHOD} ${EXTEND}
