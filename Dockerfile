@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL maintainer="lunksana <zoufeng4@gmail.com>"
 
 ENV BUILDPATH="git make linux-headers autoconf automake libtool gcc libc-dev"
-ENV METHODPATH="pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev"
+ENV METHODPATH="pcre-dev libev-dev libsodium-dev c-ares-dev mbedtls-dev rng-tools"
 ENV SERVER_HOST=0.0.0.0
 ENV SERVER_PORT=8388
 ENV PASSWORD="password"

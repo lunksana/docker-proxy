@@ -9,7 +9,7 @@
 docker pull lunksana/docker-proxy
 
 ## 2.运行命令
-docker run --name proxy -p 8388:10000 lunksana/docker-proxy:latest
+docker run --name proxy -p 10000:10000 lunksana/docker-proxy:latest
 
 ## 3.变量说明
 
@@ -20,8 +20,8 @@ docker run --name proxy -p 8388:10000 lunksana/docker-proxy:latest
 |PASSWORD    |password     |验证密码     |
 |METHOD      |chacha20-ietf-poly1305|加密方式    |
 |PLUGIN      |obfs-server  |混淆插件    |
-|PLUGIN_OPTS |obfs=http    |混淆参数，可选obfs=http、obfs=tls|
-|PLUGIN_OPTS_LOCAL|obfs=http;obfs-host=www.icloud.com|客户端混淆参数  |
+|PLUGIN_OPTS |             |混淆参数，可选obfs=http、obfs=tls|
+|PLUGIN_OPTS_LOCAL|              |客户端混淆参数  |
 |ENABLE_OBFS |false        |是否启用混淆 |
 |SS_MOD      |ss-server    |SS模式，可选ss-server、ss-local,暂时只提供此两种模式|
 
